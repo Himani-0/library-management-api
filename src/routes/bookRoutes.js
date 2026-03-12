@@ -1,0 +1,27 @@
+const express = require("express");
+
+const {
+  createBook,
+  getBooks,
+  getBookById,
+  updateBook,
+  deleteBook,
+  searchBook
+} = require("../controllers/bookController");
+
+const router = express.Router();
+
+router.post("/books", createBook);
+
+router.get("/books", getBooks);
+
+// 🔹 SEARCH must come before :id
+router.get("/books/search", searchBook);
+
+router.get("/books/:id", getBookById);
+
+router.put("/books/:id", updateBook);
+
+router.delete("/books/:id", deleteBook);
+
+module.exports = router;
