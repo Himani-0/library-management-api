@@ -1,8 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-
 const connectDB = require("./config/db");
-const bookRoutes = require("./routes/bookRoutes");
 
 dotenv.config();
 
@@ -12,7 +10,9 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/api", bookRoutes);
+app.get("/", (req, res) => {
+  res.send("Library API is running 🚀");
+});
 
 const PORT = process.env.PORT || 5000;
 
